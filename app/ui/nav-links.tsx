@@ -30,8 +30,8 @@ export default function NavLinks({
               }
             )}
           >
-            <LinkIcon className='w-10' />
-            <p className='opacity-0 group-hover:opacity-100 group-hover:w-auto transition-opacity duration-300 overflow-hidden'>
+            <LinkIcon className='w-7 h-7 flex items-center justify-center' />
+            <p className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden'>
               {link.name}
             </p>
           </Link>

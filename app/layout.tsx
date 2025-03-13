@@ -1,5 +1,6 @@
 import './globals.css';
 import Navbar from './ui/navbar';
+import Sidebar from './ui/sidebar';
 
 export default function RootLayout({
   children,
@@ -7,11 +8,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body>
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <div className='flex h-screen'>
+      <Navbar />
+      <div className='w-full flex-none md:w-40'>
+        <Sidebar />
+      </div>
+      {children}
+    </div>
   );
 }
