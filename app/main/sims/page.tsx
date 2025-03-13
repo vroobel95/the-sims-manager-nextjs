@@ -1,4 +1,3 @@
-import Pagination from '@/app/ui/pagination';
 import Table from '@/app/ui/sims/table';
 import { SimsTableSkeleton } from '@/app/ui/skeletons';
 import { Metadata } from 'next';
