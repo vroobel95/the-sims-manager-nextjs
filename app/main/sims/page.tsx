@@ -16,7 +16,7 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = 2; //await fetchSimsPages(query);
+  // const totalPages = 2; //await fetchSimsPages(query);
 
   return (
     <div className='w-full'>
@@ -28,7 +28,9 @@ export default async function Page(props: {
         {/* <CreateSim /> */}
       </div>
       <Suspense key={query + currentPage} fallback={<SimsTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
+        <Table
+        // query={query} currentPage={currentPage}
+        />
       </Suspense>
     </div>
   );
