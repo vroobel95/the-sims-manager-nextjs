@@ -28,9 +28,9 @@ export default async function Page(props: {
         {/* <CreateSim /> */}
       </div>
       <Suspense key={query + currentPage} fallback={<SimsTableSkeleton />}>
-        <Table
-        // query={query} currentPage={currentPage}
-        />
+        {/* <Table */}
+        {/* query={query} currentPage={currentPage} */}
+        {/* /> */}
       </Suspense>
     </div>
   );

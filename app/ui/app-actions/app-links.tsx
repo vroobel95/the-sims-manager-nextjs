@@ -5,6 +5,7 @@ import {
   HomeIcon,
   HomeModernIcon,
   PencilSquareIcon,
+  TableCellsIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
 import NavLinks from '../nav-links';
@@ -32,6 +33,11 @@ const links = [
     name: 'Notes',
     href: '/notes',
     icon: PencilSquareIcon,
+  },
+  {
+    name: 'Database',
+    href: '/database',
+    icon: TableCellsIcon,
   },
 ];
 
