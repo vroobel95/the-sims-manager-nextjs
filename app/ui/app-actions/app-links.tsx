@@ -1,10 +1,12 @@
 'use client';
 
+import { NavLink } from '@/app/lib/definitions';
 import {
   BuildingOfficeIcon,
   HomeIcon,
   HomeModernIcon,
   PencilSquareIcon,
+  SparklesIcon,
   TableCellsIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
@@ -36,10 +38,17 @@ const links = [
   },
   {
     name: 'Database',
-    href: '/database',
+    href: '/main/database',
     icon: TableCellsIcon,
+    nestedLinks: [
+      {
+        name: 'Aspirations',
+        href: '/main/database/aspirations',
+        icon: SparklesIcon,
+      },
+    ],
   },
-];
+] as NavLink[];
 
 export default function AppLinks() {
   return <NavLinks links={links} />;

@@ -15,6 +15,7 @@ export type NavLink = {
   name: string;
   href?: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  nestedLinks?: NavLink[];
 };
 
 export type RoundStatus = 'active' | 'finished' | 'not started';
