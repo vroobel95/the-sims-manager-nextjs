@@ -1,19 +1,22 @@
+import { z } from 'zod';
 import { Aspiration } from '../definitions';
 
-export const mapToAspirationsArray = (data: any[]): Aspiration[] | null => {
-  data.map((item) => {
-    if (
-      typeof item.id === 'string' &&
-      typeof item.name === 'string' &&
-      (typeof item.icon_url === 'string' || item.icon_url === undefined)
-    ) {
-      return {
-        id: item.id,
-        name: item.name,
-        icon_url: item.icon_url,
-      };
-    }
-  });
-  console.error('Invalid Dictionary data', data);
-  return null;
+const aspirationSchema = z.object({
+  id: z.string().uuid(),
+  name: z.string(),
+  icon_url: z.string().url().nullable().optional(),
+});
+
+const aspirationArraySchema = z.array(aspirationSchema);
+
+export const mapToAspirationsArray = async (
+  data: unknown
+): Promise<Aspiration[]> => {
+  console.log('Received data:', data);
+  try {
+    return aspirationArraySchema.parse(data);
+  } catch (error) {
+    console.error('Invalid Aspiration data', data);
+    return [];
+  }
 };
