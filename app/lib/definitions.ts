@@ -43,7 +43,7 @@ type Lot = {
 type Dictionary = {
   id: UUID;
   name: string;
-  icon_url?: string | null;
+  icon_url?: string;
 };
 
 export type Age = Dictionary;

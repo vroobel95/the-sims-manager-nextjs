@@ -18,21 +18,21 @@ export default async function Page(props: {
   const currentPage = Number(searchParams?.page) || 1;
 
   return (
-    <div className='w-full'>
-      <div className='flex w-full items-center justify-between'>
+    <div className='max-h-[calc(100vh-88px)] flex flex-col gap-5 pt-5 pr-3'>
+      <div className='flex items-center justify-between'>
         <h1 className={`text-2xl`}>Aspirations</h1>
       </div>
-      <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
-        {/* <Search placeholder="Search invoices..." /> */}
-        {/* <CreateSim /> */}
-      </div>
-      <Suspense
+      {/* <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
+        <Search placeholder="Search invoices..." />
+        <CreateSim />
+      </div> */}
+      {/* <Suspense
         key={query + currentPage}
-        // fallback={<DatabaseTableSkeleton />}
-      >
-        <Table />
-        {/* query={query} currentPage={currentPage} */}
-      </Suspense>
+        fallback={<DatabaseTableSkeleton />}
+      > */}
+      <Table />
+      {/* query={query} currentPage={currentPage} */}
+      {/* </Suspense> */}
     </div>
   );
 }
