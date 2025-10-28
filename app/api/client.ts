@@ -1,10 +1,27 @@
-const API_BASE_URL = process.env.API_BASE_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const apiClient = {
   get: async (endpoint: string) => {
-    const res = await fetch(`${API_BASE_URL}${endpoint}`);
-    if (!res.ok) throw new Error('Failed to fetch data');
-    return res.json();
+    try {
+      // Ensure base URL and endpoint are properly joined with a slash
+      const baseUrl = API_BASE_URL?.endsWith('/')
+        ? API_BASE_URL
+        : `${API_BASE_URL}/`;
+      const cleanEndpoint = endpoint.startsWith('/')
+        ? endpoint.slice(1)
+        : endpoint;
+      const url = `${baseUrl}${cleanEndpoint}`;
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(
+          `Failed to fetch data: ${res.status} ${res.statusText}`
+        );
+      }
+      return res.json();
+    } catch (error) {
+      console.error('API Request Error:', error);
+      throw error;
+    }
   },
 
   post: async (endpoint: string, body: object) => {

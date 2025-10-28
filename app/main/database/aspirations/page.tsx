@@ -1,21 +1,16 @@
 // import { DatabaseTableSkeleton } from '@/app/ui/skeletons';
 import Table from '@/app/ui/database/aspirations/table';
 import { Metadata } from 'next';
-import { Suspense } from 'react';
-
 export const metadata: Metadata = {
   title: 'Aspirations',
 };
 
-export default async function Page(props: {
-  searchParams?: Promise<{
-    query?: string;
-    page?: string;
-  }>;
-}) {
-  const searchParams = await props.searchParams;
-  const query = searchParams?.query || '';
-  const currentPage = Number(searchParams?.page) || 1;
+export default async function Page() {
+  // Uncomment when implementing search functionality
+  // const searchParams = await props.searchParams;
+  // These will be used when implementing search and pagination
+  // const query = searchParams?.query || '';
+  // const currentPage = Number(searchParams?.page) || 1;
 
   return (
     <div className='max-h-[calc(100vh-88px)] flex flex-col gap-5 pt-5 pr-3'>

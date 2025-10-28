@@ -1,6 +1,3 @@
-import { Sim } from '@/app/lib/definitions';
-import Image from 'next/image';
-
 export default async function SimsTable() {
   // const sims = await fetchFilteredSims(query, currentPage);
   // return (

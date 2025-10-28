@@ -1,8 +1,5 @@
-import { z } from 'zod';
-
-const uuidSchema = z.string().uuid();
-
-type UUID = z.infer<typeof uuidSchema>;
+// Using string type for UUID since we're validating with Zod elsewhere
+type UUID = string;
 
 export type User = {
   id: UUID;

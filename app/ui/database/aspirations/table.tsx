@@ -15,6 +15,7 @@ export default async function AspirationsTable() {
           icon_url={aspiration.icon_url}
         />
       ))}
+      <AddTile url='/main/database/aspirations/create' />
     </div>
   );
 }

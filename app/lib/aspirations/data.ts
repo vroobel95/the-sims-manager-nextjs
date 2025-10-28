@@ -4,16 +4,22 @@ import { AspirationFormData } from './schemas';
 
 export async function fetchAspirations() {
   try {
-    const data = await apiClient
-      .get('aspirations')
-      .then((data) => mapToAspirationsArray(data));
-    if (!data) {
-      throw new Error('Failed to fetch aspirations.');
+    const rawData = await apiClient.get('aspirations/');
+
+    if (!rawData) {
+      throw new Error('No data received from API');
     }
+
+    // If the API returns { data: [...] }, extract the data property
+    const dataToValidate = Array.isArray(rawData) ? rawData : rawData.data;
+    const data = await mapToAspirationsArray(dataToValidate);
+
     return data;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch aspirations.');
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to fetch aspirations: ${error.message}`);
+    }
+    throw new Error('Failed to fetch aspirations');
   }
 }
 

@@ -7,15 +7,16 @@ export const mapToAspirationsArray = async (
   try {
     return aspirationArraySchema.parse(data);
   } catch (error) {
-    throw new Error('Invalid Aspiration data');
+    throw new Error(
+      'Invalid Aspiration data: Data does not match expected schema'
+    );
   }
 };
 
 export const mapToAspiration = async (data: unknown): Promise<Aspiration> => {
   try {
-    console.log(JSON.stringify(data));
     return aspirationSchema.parse(data);
-  } catch (error) {
+  } catch {
     throw new Error('Invalid Aspiration data');
   }
 };

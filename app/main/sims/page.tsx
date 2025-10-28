@@ -1,4 +1,3 @@
-import Table from '@/app/ui/sims/table';
 import { SimsTableSkeleton } from '@/app/ui/skeletons';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
