@@ -15,7 +15,7 @@ export default function Tile({ key, url, displayName, icon_url }: TileProps) {
       key={key}
     >
       <div className='relative w-40 h-40 overflow-hidden'>
-        <div className='absolute inset-0 bg-gradient-to-b from-black/0 to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
+        <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
         <img
           src={icon_url ?? ''}
           alt={displayName}

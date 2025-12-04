@@ -11,7 +11,7 @@ export default function AddTile({ url }: AddTileProps) {
       href={url}
       className='group relative flex flex-col items-center overflow-hidden rounded-xl shadow-sm hover:shadow-md bg-white cursor-pointer border border-green-100 transition-all duration-300 hover:-translate-y-1'
     >
-      <div className='flex items-center justify-center w-40 h-40 bg-green-50/50 group-hover:bg-green-50 transition-colors duration-300'>
+      <div className='flex items-center justify-center w-40 h-40 transition-colors duration-300'>
         <div className='p-4 rounded-full bg-green-100 group-hover:bg-green-200 transition-colors duration-300'>
           <PlusIcon className='w-8 h-8 text-green-600 group-hover:text-green-700 transition-colors duration-300' />
         </div>
