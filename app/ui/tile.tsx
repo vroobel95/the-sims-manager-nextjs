@@ -2,18 +2,14 @@ import Link from 'next/link';
 
 interface TileProps {
   key: string;
-  url: string;
+  url?: string;
   displayName: string;
   icon_url?: string;
 }
 
 export default function Tile({ key, url, displayName, icon_url }: TileProps) {
-  return (
-    <Link
-      href={url}
-      className='group relative flex flex-col items-center overflow-hidden rounded-xl shadow-sm hover:shadow-md bg-white cursor-pointer border border-gray-100 transition-all duration-300 hover:-translate-y-1'
-      key={key}
-    >
+  const tileComponent = (
+    <>
       <div className='relative w-40 h-40 overflow-hidden'>
         <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
         <img
@@ -27,6 +23,19 @@ export default function Tile({ key, url, displayName, icon_url }: TileProps) {
           {displayName}
         </p>
       </div>
+    </>
+  );
+
+  return url ? (
+    <Link
+      href={url}
+      className='group relative flex flex-col items-center overflow-hidden rounded-xl shadow-sm hover:shadow-md bg-white cursor-pointer border border-gray-100 transition-all duration-300 hover:-translate-y-1'
+    >
+      {tileComponent}
     </Link>
+  ) : (
+    <div className='group relative flex flex-col items-center overflow-hidden rounded-xl shadow-sm hover:shadow-md bg-white border border-gray-100 transition-all duration-300 hover:-translate-y-1'>
+      {tileComponent}
+    </div>
   );
 }

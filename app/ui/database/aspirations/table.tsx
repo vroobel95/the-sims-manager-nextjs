@@ -1,5 +1,4 @@
 import { fetchAspirations } from '@/app/lib/aspirations/data';
-import AddTile from '../../add-tile';
 import Tile from '../../tile';
 
 export default async function AspirationsTable() {
@@ -11,11 +10,9 @@ export default async function AspirationsTable() {
         <Tile
           key={aspiration.id}
           displayName={aspiration.name}
-          url={`/main/database/aspirations/${aspiration.id}/edit`}
           icon_url={aspiration.icon_url}
         />
       ))}
-      <AddTile url='/main/database/aspirations/create' />
     </div>
   );
 }
