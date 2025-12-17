@@ -1,8 +1,15 @@
-import { fetchBadges } from '@/app/lib/badges/data';
+'use client';
+
+import { useBadges } from '@/app/lib/badges/useBadges';
+import Spinner from '../../spinner';
 import Tile from '../../tile';
 
-export default async function BadgesTable() {
-  const badges = await fetchBadges();
+export default function BadgesTable() {
+  const { badges, isLoading } = useBadges();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5'>

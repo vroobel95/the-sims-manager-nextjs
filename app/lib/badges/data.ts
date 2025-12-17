@@ -1,7 +1,8 @@
 import { apiClient } from '@/app/api/client';
 import { mapToBadgesArray } from './mappings';
+import { Badge } from '../definitions';
 
-export async function fetchBadges() {
+export async function fetchBadges(): Promise<Badge[]> {
   try {
     const rawData = await apiClient.get('badges/');
 

@@ -1,7 +1,8 @@
 import { apiClient } from '@/app/api/client';
+import { Aspiration } from '../definitions';
 import { mapToAspirationsArray } from './mappings';
 
-export async function fetchAspirations() {
+export async function fetchAspirations(): Promise<Aspiration[]> {
   try {
     const rawData = await apiClient.get('aspirations/');
 

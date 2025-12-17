@@ -1,8 +1,15 @@
-import { fetchAspirations } from '@/app/lib/aspirations/data';
+'use client';
+
+import { useAspirations } from '@/app/lib/aspirations/useAspirations';
+import Spinner from '../../spinner';
 import Tile from '../../tile';
 
-export default async function AspirationsTable() {
-  const aspirations = await fetchAspirations();
+export default function AspirationsTable() {
+  const { aspirations, isLoading } = useAspirations();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5'>
