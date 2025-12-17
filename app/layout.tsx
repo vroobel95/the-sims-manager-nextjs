@@ -11,12 +11,14 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <div className='flex h-screen'>
+        <div className='flex h-screen flex-col'>
           <Navbar />
-          <div className='w-full flex-none md:w-40'>
+          <div className='flex flex-1 overflow-hidden'>
             <Sidebar />
+            <main className='flex-1 overflow-auto md:transition-all md:duration-300' style={{ marginLeft: 'var(--sidebar-width, 0px)' }}>
+              {children}
+            </main>
           </div>
-          {children}
         </div>
         <SpeedInsights />
       </body>
