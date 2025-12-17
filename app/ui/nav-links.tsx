@@ -84,7 +84,7 @@ export default function NavLinks({
               link.nestedLinks &&
               link.nestedLinks.length > 0 &&
               isSidebarExpanded && (
-                <div className='ml-8 mt-2 p-8 space-y-4 py-4'>
+                <div className='ml-8 mt-2 space-y-2'>
                   {link.nestedLinks.map((child) => {
                     const ChildLinkIcon = child.icon;
                     return (
@@ -93,13 +93,13 @@ export default function NavLinks({
                         href={child.href ?? ''}
                         className={clsx(
                           className,
-                          'flex items-center gap-2 text-sm font-medium hover:text-green transition-all duration-300',
+                          'flex items-center h-[48px] pl-8 pr-2 gap-2 text-sm font-medium hover:text-green-700 transition-all duration-300',
                           {
-                            'text-green': pathname === child.href,
+                            'text-green-600': pathname === child.href,
                           }
                         )}
                       >
-                        <ChildLinkIcon className='w-7 h-7 flex items-center justify-center flex-shrink-0' />
+                        <ChildLinkIcon className='w-7 h-7 flex items-center justify-center flex-shrink-0 text-green-600' />
                         <p className='overflow-hidden whitespace-nowrap'>
                           {child.name}
                         </p>
