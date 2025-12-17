@@ -53,7 +53,7 @@ export type LifetimeWant = Dictionary;
 export type Aspiration = Dictionary;
 export type Chemistry = Dictionary;
 export type Badge = Dictionary & {
-  badgeRank: BadgeRank;
+  badge_rank: BadgeRank;
 };
 
 export type ResidentialLot = Lot & {

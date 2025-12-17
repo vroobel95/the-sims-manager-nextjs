@@ -334,7 +334,7 @@ const badges: Badge[] = [
   (['bronze', 'silver', 'gold'] as BadgeRank[]).map((badgeRank) => ({
     id: uuidv4(),
     name: `${name} (${badgeRank})`,
-    badgeRank,
+    badge_rank: badgeRank,
   }))
 );
 

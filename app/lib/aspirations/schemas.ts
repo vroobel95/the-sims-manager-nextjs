@@ -7,10 +7,3 @@ export const aspirationSchema = z.object({
 });
 
 export const aspirationArraySchema = z.array(aspirationSchema);
-
-export const aspirationFormSchema = z.object({
-  name: z.string().nonempty('Aspiration name cannot be empty'),
-  iconFile: z.any().optional(),
-});
-
-export type AspirationFormData = z.infer<typeof aspirationFormSchema>;

@@ -261,7 +261,7 @@ async function seedBadges() {
       (badge) =>
         sql`
         INSERT INTO badges (id, name, badge_rank)
-        VALUES (${badge.id}, ${badge.name}, ${badge.badgeRank})
+        VALUES (${badge.id}, ${badge.name}, ${badge.badge_rank})
         ON CONFLICT (id) DO NOTHING;
       `
     )
