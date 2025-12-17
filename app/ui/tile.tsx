@@ -9,7 +9,7 @@ interface TileProps {
 
 export default function Tile({ key, url, displayName, icon_url }: TileProps) {
   const tileComponent = (
-    <>
+    <div key={key}>
       <div className='relative w-40 h-40 overflow-hidden'>
         <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
         <img
@@ -23,7 +23,7 @@ export default function Tile({ key, url, displayName, icon_url }: TileProps) {
           {displayName}
         </p>
       </div>
-    </>
+    </div>
   );
 
   return url ? (
