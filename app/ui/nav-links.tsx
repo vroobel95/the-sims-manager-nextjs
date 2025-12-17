@@ -67,8 +67,8 @@ export default function NavLinks({
                 {
                   'h-[48px] p-2 gap-2 text-sm font-medium hover:text-green-700':
                     isSidebarExpanded,
-                  'w-20 justify-center': !isSidebarExpanded,
-                  'p-2 pl-6': !isSidebarExpanded,
+                  'w-18 justify-center': !isSidebarExpanded,
+                  'p-2 pl-5': !isSidebarExpanded,
                 }
               )}
             >
