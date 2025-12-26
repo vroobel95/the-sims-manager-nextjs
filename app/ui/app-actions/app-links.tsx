@@ -4,6 +4,7 @@ import { NavLink } from '@/app/lib/definitions';
 import {
   BriefcaseIcon,
   BuildingOfficeIcon,
+  HeartIcon,
   HomeIcon,
   HomeModernIcon,
   PencilSquareIcon,
@@ -57,6 +58,11 @@ const links = [
         name: 'Careers',
         href: '/main/database/careers',
         icon: BriefcaseIcon,
+      },
+      {
+        name: 'Chemistries',
+        href: '/main/database/chemistries',
+        icon: HeartIcon,
       },
     ],
   },
