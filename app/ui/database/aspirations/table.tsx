@@ -2,7 +2,7 @@
 
 import { useAspirations } from '@/app/lib/aspirations/useAspirations';
 import Spinner from '../../spinner';
-import Tile from '../../tile';
+import Table, { Action, Column } from '../../table';
 
 export default function AspirationsTable() {
   const { aspirations, isLoading } = useAspirations();
@@ -11,15 +11,28 @@ export default function AspirationsTable() {
     return <Spinner />;
   }
 
-  return (
-    <div className='mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5'>
-      {aspirations?.map((aspiration) => (
-        <Tile
-          key={aspiration.id}
-          displayName={aspiration.name}
-          icon_url={aspiration.icon_url}
-        />
-      ))}
-    </div>
-  );
+  const columns: Column[] = [
+    {
+      key: 'icon_url',
+      label: 'Icon',
+      iconUrl: 'icon_url',
+    },
+    {
+      key: 'name',
+      label: 'Name',
+    },
+  ];
+
+  const actions: Action[] = [
+    {
+      id: 'view',
+      label: 'View',
+      onClick: (row) => {
+        console.log('View aspiration:', row);
+        // TODO: Implement view action
+      },
+    },
+  ];
+
+  return <Table columns={columns} data={aspirations || []} actions={actions} />;
 }

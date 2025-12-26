@@ -15,22 +15,39 @@ export type NavLink = {
   nestedLinks?: NavLink[];
 };
 
-export type RoundStatus = 'active' | 'finished' | 'not started';
-export type ResidentialLotType = 'apartment' | 'house' | 'dorm' | 'greek house';
-export type PublicLotType =
-  | 'cemetary'
-  | 'disco'
-  | 'casino'
-  | 'bowling'
-  | 'restaurant'
-  | 'art gallery'
-  | 'flower shop'
-  | 'beauty salon'
-  | 'grocery shop'
-  | 'recreation'
-  | 'clothes store'
-  | 'park';
-export type BadgeRank = 'bronze' | 'silver' | 'gold';
+export enum RoundStatus {
+  ACTIVE = 'active',
+  FINISHED = 'finished',
+  NOT_STARTED = 'not started',
+}
+
+export enum ResidentialLotType {
+  APARTMENT = 'apartment',
+  HOUSE = 'house',
+  DORM = 'dorm',
+  GREEK_HOUSE = 'greek house',
+}
+
+export enum PublicLotType {
+  CEMETERY = 'cemetary',
+  DISCO = 'disco',
+  CASINO = 'casino',
+  BOWLING = 'bowling',
+  RESTAURANT = 'restaurant',
+  ART_GALLERY = 'art gallery',
+  FLOWER_SHOP = 'flower shop',
+  BEAUTY_SALON = 'beauty salon',
+  GROCERY_SHOP = 'grocery shop',
+  RECREATION = 'recreation',
+  CLOTHES_STORE = 'clothes store',
+  PARK = 'park',
+}
+
+export enum BadgeRank {
+  BRONZE = 'Bronze',
+  SILVER = 'Silver',
+  GOLD = 'Gold',
+}
 
 type Lot = {
   id: UUID;
