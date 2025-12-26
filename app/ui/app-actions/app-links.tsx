@@ -3,14 +3,16 @@
 import { NavLink } from '@/app/lib/definitions';
 import {
   AcademicCapIcon,
+  BoltIcon,
   BriefcaseIcon,
   BuildingOfficeIcon,
-  HeartIcon,
+  FilmIcon,
   HomeIcon,
   HomeModernIcon,
   PencilSquareIcon,
   ShieldCheckIcon,
   SparklesIcon,
+  StarIcon,
   TableCellsIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
@@ -63,12 +65,22 @@ const links = [
       {
         name: 'Chemistries',
         href: '/main/database/chemistries',
-        icon: HeartIcon,
+        icon: BoltIcon,
       },
       {
         name: 'College Majors',
         href: '/main/database/collegeMajors',
         icon: AcademicCapIcon,
+      },
+      {
+        name: 'Hobbies',
+        href: '/main/database/hobbies',
+        icon: FilmIcon,
+      },
+      {
+        name: 'Lifetime Wants',
+        href: '/main/database/lifetimeWants',
+        icon: StarIcon,
       },
     ],
   },
