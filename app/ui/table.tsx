@@ -1,6 +1,7 @@
 'use client';
 
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 import React, { ReactNode, useState } from 'react';
 
 export interface Column {
@@ -101,9 +102,10 @@ export default function Table<
                     {iconColumn && (
                       <div className='flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 overflow-hidden'>
                         {iconUrl ? (
-                          <img
+                          <Image
                             src={iconUrl}
                             alt='icon'
+                            fill
                             className='w-full h-full object-cover'
                           />
                         ) : (

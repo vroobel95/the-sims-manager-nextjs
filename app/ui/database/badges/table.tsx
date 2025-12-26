@@ -1,7 +1,6 @@
 'use client';
 
 import { useBadges } from '@/app/lib/badges/useBadges';
-import { BadgeRank } from '@/app/lib/definitions';
 import Spinner from '../../spinner';
 import Table, { Action, Column } from '../../table';
 
