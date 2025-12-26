@@ -16,6 +16,7 @@ import {
   StarIcon,
   TableCellsIcon,
   UserGroupIcon,
+  SparklesIcon as ZodiacIcon,
 } from '@heroicons/react/24/outline';
 import NavLinks from '../nav-links';
 
@@ -87,6 +88,11 @@ const links = [
         name: 'Neighbourhoods',
         href: '/main/database/neighbourhoods',
         icon: MapIcon,
+      },
+      {
+        name: 'Zodiac Signs',
+        href: '/main/database/zodiacSigns',
+        icon: ZodiacIcon,
       },
     ],
   },
