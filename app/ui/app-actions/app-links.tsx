@@ -10,13 +10,13 @@ import {
   HomeIcon,
   HomeModernIcon,
   MapIcon,
+  MoonIcon,
   PencilSquareIcon,
   ShieldCheckIcon,
   SparklesIcon,
   StarIcon,
   TableCellsIcon,
   UserGroupIcon,
-  SparklesIcon as ZodiacIcon,
 } from '@heroicons/react/24/outline';
 import NavLinks from '../nav-links';
 
@@ -92,7 +92,7 @@ const links = [
       {
         name: 'Zodiac Signs',
         href: '/main/database/zodiacSigns',
-        icon: ZodiacIcon,
+        icon: MoonIcon,
       },
     ],
   },
