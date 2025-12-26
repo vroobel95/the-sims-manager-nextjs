@@ -12,12 +12,6 @@ export default function BadgesTable() {
     return <Spinner />;
   }
 
-  const rankOrder: Record<string, number> = {
-    [BadgeRank.BRONZE]: 0,
-    [BadgeRank.SILVER]: 1,
-    [BadgeRank.GOLD]: 2,
-  };
-
   const columns: Column[] = [
     {
       key: 'icon_url',

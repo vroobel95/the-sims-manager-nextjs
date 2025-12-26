@@ -2,7 +2,6 @@ import {
   AdjustmentsHorizontalIcon,
   BuildingOfficeIcon,
   SparklesIcon,
-  StarIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/solid';
 import { Metadata } from 'next';
@@ -138,7 +137,7 @@ export default async function Page() {
             <span className='mr-3 flex h-6 w-6 items-center justify-center rounded-full bg-green-600 text-sm font-bold text-white'>
               3
             </span>
-            <p>Track your Sims' progress and achievements as you play</p>
+            <p>Track your Sims progress and achievements as you play</p>
           </li>
         </ul>
       </section>
