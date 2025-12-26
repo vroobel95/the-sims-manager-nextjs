@@ -2,6 +2,7 @@
 
 import { NavLink } from '@/app/lib/definitions';
 import {
+  AcademicCapIcon,
   BriefcaseIcon,
   BuildingOfficeIcon,
   HeartIcon,
@@ -63,6 +64,11 @@ const links = [
         name: 'Chemistries',
         href: '/main/database/chemistries',
         icon: HeartIcon,
+      },
+      {
+        name: 'College Majors',
+        href: '/main/database/collegeMajors',
+        icon: AcademicCapIcon,
       },
     ],
   },
