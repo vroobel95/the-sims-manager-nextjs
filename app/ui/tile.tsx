@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface TileProps {
@@ -12,9 +13,10 @@ export default function Tile({ id, url, displayName, icon_url }: TileProps) {
     <div key={id}>
       <div className='relative w-40 h-40 overflow-hidden'>
         <div className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10' />
-        <img
+        <Image
           src={icon_url ?? ''}
           alt={displayName}
+          fill
           className='absolute inset-0 object-cover w-full h-full transition-transform duration-300 group-hover:scale-105'
         />
       </div>

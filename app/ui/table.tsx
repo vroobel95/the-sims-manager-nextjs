@@ -10,26 +10,27 @@ export interface Column {
   iconUrl?: string;
 }
 
-export interface Action {
+export interface Action<
+  T extends Record<string, unknown> = Record<string, unknown>
+> {
   id: string;
   label: string;
-  onClick: (row: Record<string, any>) => void;
+  onClick: (row: T) => void;
   variant?: 'default' | 'danger';
 }
 
-interface TableProps {
+interface TableProps<
+  T extends Record<string, unknown> = Record<string, unknown>
+> {
   columns: Column[];
-  data: Record<string, any>[];
-  actions?: Action[];
+  data: T[];
+  actions?: Action<T>[];
   rowKey?: string;
 }
 
-export default function Table({
-  columns,
-  data,
-  actions = [],
-  rowKey = 'id',
-}: TableProps) {
+export default function Table<
+  T extends Record<string, unknown> = Record<string, unknown>
+>({ columns, data, actions = [], rowKey = 'id' }: TableProps<T>) {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const hasIcon = columns.some((col) => col.icon || col.iconUrl);
   const hasActions = actions.length > 0;
@@ -38,7 +39,7 @@ export default function Table({
     setOpenMenuId(openMenuId === rowId ? null : rowId);
   };
 
-  const handleAction = (action: Action, row: Record<string, any>) => {
+  const handleAction = (action: Action<T>, row: T) => {
     action.onClick(row);
     setOpenMenuId(null);
   };
@@ -85,8 +86,8 @@ export default function Table({
             const iconColumn = columns.find((col) => col.icon || col.iconUrl);
             const isLastRow = rowIndex === data.length - 1;
             const iconUrl = iconColumn?.iconUrl
-              ? row[iconColumn.iconUrl]
-              : null;
+              ? (row[iconColumn.iconUrl] as string)
+              : '';
 
             return (
               <tr
@@ -119,7 +120,7 @@ export default function Table({
                         key={`${rowId}-${col.key}`}
                         className='px-6 py-4 text-sm text-gray-800 font-medium'
                       >
-                        {row[col.key]}
+                        {row[col.key] as ReactNode}
                       </td>
                     )
                 )}
