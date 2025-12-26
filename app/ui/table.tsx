@@ -100,16 +100,19 @@ export default function Table<
                 {hasIcon && (
                   <td className='px-6 py-4 whitespace-nowrap'>
                     {iconColumn && (
-                      <div className='flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 overflow-hidden'>
+                      <div className='flex items-center overflow-hidden'>
                         {iconUrl ? (
                           <Image
                             src={iconUrl}
                             alt='icon'
-                            fill
-                            className='w-full h-full object-cover'
+                            width={40}
+                            height={40}
+                            className='object-cover'
                           />
                         ) : (
-                          iconColumn.icon
+                          <div className='flex items-center w-10 h-10'>
+                            {iconColumn.icon}
+                          </div>
                         )}
                       </div>
                     )}
