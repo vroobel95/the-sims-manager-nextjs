@@ -2,6 +2,7 @@
 
 import { NavLink } from '@/app/lib/definitions';
 import {
+  BriefcaseIcon,
   BuildingOfficeIcon,
   HomeIcon,
   HomeModernIcon,
@@ -51,6 +52,11 @@ const links = [
         name: 'Badges',
         href: '/main/database/badges',
         icon: ShieldCheckIcon,
+      },
+      {
+        name: 'Careers',
+        href: '/main/database/careers',
+        icon: BriefcaseIcon,
       },
     ],
   },

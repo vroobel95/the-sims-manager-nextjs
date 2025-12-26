@@ -18,14 +18,6 @@ export default function BadgesTable() {
     [BadgeRank.GOLD]: 2,
   };
 
-  const sortedBadges = [...(badges || [])].sort((a, b) => {
-    const nameComparison = a.name.localeCompare(b.name);
-    if (nameComparison !== 0) {
-      return nameComparison;
-    }
-    return rankOrder[a.badge_rank] - rankOrder[b.badge_rank];
-  });
-
   const columns: Column[] = [
     {
       key: 'icon_url',
@@ -53,5 +45,5 @@ export default function BadgesTable() {
     },
   ];
 
-  return <Table columns={columns} data={sortedBadges} actions={actions} />;
+  return <Table columns={columns} data={badges || []} actions={actions} />;
 }
