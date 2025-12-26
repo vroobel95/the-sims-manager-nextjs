@@ -31,7 +31,7 @@ const links = [
   },
   {
     name: 'Households',
-    href: '/households',
+    href: '/main/households',
     icon: HomeModernIcon,
   },
   {
