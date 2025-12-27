@@ -13,7 +13,7 @@ export async function fetchResidentialLots() {
     const data = await mapToResidentialLotsArray(dataToValidate);
 
     return data;
-  } catch (error: unknown) {
+  } catch {
     console.warn('Failed to fetch residential lots, continuing without data');
     return [];
   }

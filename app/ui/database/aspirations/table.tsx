@@ -28,7 +28,6 @@ export default function AspirationsTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View aspiration:', row);
         // TODO: Implement view action
       },
     },

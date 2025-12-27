@@ -28,7 +28,6 @@ export default function CollegeMajorsTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View college major:', row);
         // TODO: Implement view action
       },
     },

@@ -28,7 +28,6 @@ export default function ZodiacSignsTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View zodiac sign:', row);
         // TODO: Implement view action
       },
     },

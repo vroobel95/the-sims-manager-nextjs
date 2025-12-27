@@ -1,7 +1,9 @@
 'use client';
 
+import { HouseholdSim } from '@/app/lib/definitions';
 import { useHouseholdDetail } from '@/app/lib/households/useHouseholdDetail';
 import { useResidentialLots } from '@/app/lib/residentialLots/useResidentialLots';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Breadcrumbs from '../breadcrumbs';
 import Spinner from '../spinner';
@@ -19,14 +21,14 @@ export default function HouseholdDetail({ id }: { id: string }) {
   );
   const [dragActive, setDragActive] = useState(false);
   const [selectedHouseId, setSelectedHouseId] = useState<string>(
-    household?.house_name || ''
+    household?.name || ''
   );
   const [originalData] = useState({
     name: household?.name || '',
     round: household?.round || 0,
     funds: household?.funds || 0,
     imageUrl: household?.image_url || null,
-    houseId: household?.house_name || '',
+    houseId: household?.name || '',
   });
 
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {
@@ -114,20 +116,12 @@ export default function HouseholdDetail({ id }: { id: string }) {
       setRound(household.round);
       setFunds(household.funds);
       setImageUrl(household.image_url || null);
-      setSelectedHouseId(household.house_name || '');
+      setSelectedHouseId(household.name || '');
     }
   }, [household]);
 
   const handleSave = async () => {
     // TODO: Implement save API call
-    console.log('Saving household:', {
-      id,
-      name,
-      round,
-      funds,
-      imageUrl,
-      houseId: selectedHouseId,
-    });
     setIsEditMode(false);
     setHasChanges(false);
   };
@@ -135,7 +129,6 @@ export default function HouseholdDetail({ id }: { id: string }) {
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this household?')) {
       // TODO: Implement delete API call
-      console.log('Deleting household:', id);
     }
   };
 
@@ -232,10 +225,12 @@ export default function HouseholdDetail({ id }: { id: string }) {
               <div className='flex justify-center'>
                 {imageUrl ? (
                   <div className='w-64 h-64 rounded-xl overflow-hidden shadow-md'>
-                    <img
+                    <Image
                       src={imageUrl}
                       alt={household.name}
                       className='w-full h-full object-cover'
+                      width={40}
+                      height={40}
                     />
                   </div>
                 ) : (
@@ -271,10 +266,12 @@ export default function HouseholdDetail({ id }: { id: string }) {
                 <div className='flex flex-col items-center justify-center'>
                   {imageUrl ? (
                     <div className='w-40 h-40 mb-6 rounded-lg overflow-hidden'>
-                      <img
+                      <Image
                         src={imageUrl}
                         alt={household.name}
                         className='w-full h-full object-cover'
+                        width={40}
+                        height={40}
                       />
                     </div>
                   ) : (
@@ -370,7 +367,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
               ) : (
                 <input
                   type='text'
-                  value={household.house_name || 'N/A'}
+                  value={household.name || 'N/A'}
                   readOnly
                   className='w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-900 focus:ring-0'
                 />
@@ -436,7 +433,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
         </div>
         {household.assigned_sims && household.assigned_sims.length > 0 && (
           <div className='grid grid-cols-4 gap-6'>
-            {household.assigned_sims.map((sim: any) => (
+            {household.assigned_sims.map((sim: HouseholdSim) => (
               <div
                 key={sim.id}
                 className='group relative flex flex-col items-center overflow-hidden rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'

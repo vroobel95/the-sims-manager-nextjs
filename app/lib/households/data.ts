@@ -1,5 +1,5 @@
 import { apiClient } from '@/app/api/client';
-import { Household } from '../definitions';
+import { Household, HouseholdDetailResponse } from '../definitions';
 import { mapToHouseholdDetail, mapToHouseholdsArray } from './mappings';
 
 export async function fetchHouseholds(): Promise<Household[]> {
@@ -22,7 +22,9 @@ export async function fetchHouseholds(): Promise<Household[]> {
   }
 }
 
-export async function fetchHouseholdDetail(id: string) {
+export async function fetchHouseholdDetail(
+  id: string
+): Promise<HouseholdDetailResponse> {
   try {
     const rawData = await apiClient.get(`households/${id}`);
 

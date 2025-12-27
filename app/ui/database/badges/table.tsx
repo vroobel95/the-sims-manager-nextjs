@@ -32,7 +32,6 @@ export default function BadgesTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View badge:', row);
         // TODO: Implement view action
       },
     },

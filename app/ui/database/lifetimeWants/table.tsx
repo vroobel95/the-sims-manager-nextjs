@@ -28,7 +28,6 @@ export default function LifetimeWantsTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View lifetime want:', row);
         // TODO: Implement view action
       },
     },

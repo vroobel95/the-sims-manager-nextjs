@@ -28,7 +28,6 @@ export default function ChemistriesTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View chemistry:', row);
         // TODO: Implement view action
       },
     },

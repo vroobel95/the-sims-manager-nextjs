@@ -99,6 +99,22 @@ export type Household = {
   image_url?: string;
 };
 
+export type HouseholdSim = {
+  id: UUID;
+  name: string;
+};
+
+export type HouseholdDetailResponse = {
+  id: UUID;
+  name: string;
+  round: number;
+  funds: number;
+  address?: string | null;
+  wealth?: number | null;
+  image_url?: string | null;
+  assigned_sims: HouseholdSim[];
+};
+
 export type Sim = {
   id: UUID;
   name: string;

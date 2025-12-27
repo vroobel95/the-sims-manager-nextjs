@@ -32,7 +32,6 @@ export default function CareersTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View career:', row);
         // TODO: Implement view action
       },
     },

@@ -23,7 +23,6 @@ export default function HobbiesTable() {
       id: 'view',
       label: 'View',
       onClick: (row) => {
-        console.log('View hobby:', row);
         // TODO: Implement view action
       },
     },
