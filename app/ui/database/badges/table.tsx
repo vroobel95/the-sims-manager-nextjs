@@ -31,7 +31,7 @@ export default function BadgesTable() {
     {
       id: 'view',
       label: 'View',
-      onClick: (row) => {
+      onClick: () => {
         // TODO: Implement view action
       },
     },

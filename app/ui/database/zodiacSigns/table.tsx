@@ -27,7 +27,7 @@ export default function ZodiacSignsTable() {
     {
       id: 'view',
       label: 'View',
-      onClick: (row) => {
+      onClick: () => {
         // TODO: Implement view action
       },
     },

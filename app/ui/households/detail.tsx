@@ -360,7 +360,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
                   <option value=''>Select a house</option>
                   {lots?.map((lot) => (
                     <option key={lot.id} value={lot.id}>
-                      {lot.name}
+                      {lot.address}
                     </option>
                   ))}
                 </select>

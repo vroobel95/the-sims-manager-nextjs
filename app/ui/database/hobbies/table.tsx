@@ -22,7 +22,7 @@ export default function HobbiesTable() {
     {
       id: 'view',
       label: 'View',
-      onClick: (row) => {
+      onClick: () => {
         // TODO: Implement view action
       },
     },

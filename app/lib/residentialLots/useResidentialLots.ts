@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ResidentialLot } from '../definitions';
 import { fetchResidentialLots } from './data';
 
 export function useResidentialLots() {
-  const [lots, setLots] = useState<any[]>([]);
+  const [lots, setLots] = useState<ResidentialLot[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

@@ -27,7 +27,7 @@ export default function AspirationsTable() {
     {
       id: 'view',
       label: 'View',
-      onClick: (row) => {
+      onClick: () => {
         // TODO: Implement view action
       },
     },

@@ -27,7 +27,7 @@ export default function CollegeMajorsTable() {
     {
       id: 'view',
       label: 'View',
-      onClick: (row) => {
+      onClick: () => {
         // TODO: Implement view action
       },
     },

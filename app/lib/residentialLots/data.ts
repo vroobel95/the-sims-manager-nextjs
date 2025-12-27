@@ -1,7 +1,8 @@
 import { apiClient } from '@/app/api/client';
+import { ResidentialLot } from '../definitions';
 import { mapToResidentialLotsArray } from './mappings';
 
-export async function fetchResidentialLots() {
+export async function fetchResidentialLots(): Promise<ResidentialLot[]> {
   try {
     const rawData = await apiClient.get('residentialLots/');
 
