@@ -1,4 +1,4 @@
-import { ResidentialLot } from '../definitions';
+import { ResidentialLot, ResidentialLotType } from '../definitions';
 import { residentialLotArraySchema } from './schemas';
 
 export async function mapToResidentialLotsArray(
@@ -9,7 +9,7 @@ export async function mapToResidentialLotsArray(
     return validatedData.map((lot) => ({
       id: lot.id,
       address: lot.address,
-      type: lot.type as any, // Will be validated/cast to ResidentialLotType
+      type: lot.type as ResidentialLotType,
       value: lot.value,
       neighbourhoodId: lot.neighbourhood_id,
       numberOfBedrooms: lot.number_of_bedrooms,
