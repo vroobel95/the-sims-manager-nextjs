@@ -31,7 +31,12 @@
     "funds": "Funds ($)",
     "wealth": "Wealth ($)",
     "house": "House",
-    "selectHouse": "Select House"
+    "selectHouse": "Select House",
+    "notFound": "This household could not be found.",
+    "errorLoading": "Error Loading Household",
+    "details": "Details",
+    "savedSuccessfully": "Household saved successfully.",
+    "failedToSave": "Failed to save household."
   },
   "image": {
     "chooseImage": "Choose Image",

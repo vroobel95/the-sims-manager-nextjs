@@ -1,12 +1,14 @@
 'use client';
 
 import { HouseholdSim } from '@/app/lib/definitions';
+import { updateHousehold } from '@/app/lib/households/data';
 import { useHouseholdDetail } from '@/app/lib/households/useHouseholdDetail';
 import { getTranslation } from '@/app/lib/i18n';
 import { useLocale } from '@/app/lib/i18n/LocaleContext';
 import { useResidentialLots } from '@/app/lib/residentialLots/useResidentialLots';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import Breadcrumbs from '../breadcrumbs';
 import Spinner from '../spinner';
 
@@ -139,9 +141,25 @@ export default function HouseholdDetail({ id }: { id: string }) {
   }, [household]);
 
   const handleSave = async () => {
-    // TODO: Implement save API call
-    setIsEditMode(false);
-    setHasChanges(false);
+    try {
+      await updateHousehold(id, {
+        name,
+        round,
+        funds,
+        wealth,
+        image_url: imageUrl,
+        houseId: selectedHouseId,
+      });
+      setIsEditMode(false);
+      setHasChanges(false);
+      toast.success(getTranslation(locale, 'household.savedSuccessfully'));
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? `Failed to save: ${error.message}`
+          : getTranslation(locale, 'household.failedToSave')
+      );
+    }
   };
 
   const handleDelete = () => {
@@ -159,7 +177,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
       <div className='flex items-center justify-center py-12'>
         <div className='bg-red-50 border border-red-200 rounded-lg p-6 max-w-md'>
           <h3 className='text-red-900 font-semibold mb-2'>
-            Error Loading Household
+            {getTranslation(locale, 'household.errorLoading')}
           </h3>
           <p className='text-red-700 text-sm'>
             {error instanceof Error
@@ -177,7 +195,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
         <div className='bg-gray-50 border border-gray-200 rounded-lg p-6 max-w-md'>
           <h3 className='text-gray-900 font-semibold mb-2'>Not Found</h3>
           <p className='text-gray-600 text-sm'>
-            This household could not be found.
+            {getTranslation(locale, 'household.notFound')}
           </p>
         </div>
       </div>
@@ -193,7 +211,9 @@ export default function HouseholdDetail({ id }: { id: string }) {
 
       <div className='bg-white rounded-2xl border border-gray-200 p-8 shadow-sm'>
         <div className='flex items-center justify-between mb-8 pb-5 border-b border-gray-200'>
-          <h2 className='text-xl font-semibold text-gray-900'>Details</h2>
+          <h2 className='text-xl font-semibold text-gray-900'>
+            {getTranslation(locale, 'household.details')}
+          </h2>
           <div className='flex gap-3'>
             {!isEditMode ? (
               <>

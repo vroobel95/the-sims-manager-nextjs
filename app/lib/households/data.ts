@@ -41,3 +41,31 @@ export async function fetchHouseholdDetail(
     throw new Error('Failed to fetch household detail');
   }
 }
+
+export async function updateHousehold(
+  id: string,
+  data: {
+    name: string;
+    round: number;
+    funds: number;
+    wealth: number;
+    image_url?: string | null;
+    houseId?: string;
+  }
+): Promise<HouseholdDetailResponse> {
+  try {
+    const rawData = await apiClient.put(`households/${id}`, data);
+
+    if (!rawData) {
+      throw new Error('No data received from API');
+    }
+
+    const updatedData = await mapToHouseholdDetail(rawData);
+    return updatedData;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to update household: ${error.message}`);
+    }
+    throw new Error('Failed to update household');
+  }
+}

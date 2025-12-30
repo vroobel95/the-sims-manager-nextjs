@@ -1,4 +1,5 @@
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Toaster } from 'sonner';
 import './globals.css';
 import { LocaleProvider } from './lib/i18n/LocaleContext';
 import Navbar from './ui/navbar';
@@ -27,6 +28,7 @@ export default function RootLayout({
           </div>
           <SpeedInsights />
         </LocaleProvider>
+        <Toaster position='bottom-right' />
       </body>
     </html>
   );

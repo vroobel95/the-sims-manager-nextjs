@@ -31,7 +31,12 @@
     "funds": "Fundusze ($)",
     "wealth": "Majątek ($)",
     "house": "Dom",
-    "selectHouse": "Wybierz dom"
+    "selectHouse": "Wybierz dom",
+    "notFound": "To gospodarstwo domowe nie zostało znalezione.",
+    "errorLoading": "Błąd podczas ładowania gospodarstwa domowego",
+    "details": "Szczegóły",
+    "savedSuccessfully": "Gospodarstwo domowe zostało pomyślnie zapisane.",
+    "failedToSave": "Nie udało się zapisać gospodarstwa domowego."
   },
   "image": {
     "chooseImage": "Wybierz obraz",
