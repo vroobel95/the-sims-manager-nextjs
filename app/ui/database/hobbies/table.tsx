@@ -15,6 +15,7 @@ export default function HobbiesTable() {
     {
       key: 'name',
       label: 'Name',
+      translationKey: 'columns.name',
     },
   ];
 

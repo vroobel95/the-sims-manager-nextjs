@@ -16,10 +16,12 @@ export default function AspirationsTable() {
       key: 'icon_url',
       label: 'Icon',
       iconUrl: 'icon_url',
+      translationKey: 'table.icon',
     },
     {
       key: 'name',
       label: 'Name',
+      translationKey: 'columns.name',
     },
   ];
 

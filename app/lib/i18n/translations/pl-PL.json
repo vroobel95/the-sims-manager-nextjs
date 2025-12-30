@@ -1,0 +1,40 @@
+{
+  "table": {
+    "icon": "Ikona",
+    "name": "Nazwa",
+    "actions": "Akcje",
+    "noData": "Brak dostępnych danych",
+    "add": "Dodaj"
+  },
+  "columns": {
+    "id": "ID",
+    "name": "Nazwa",
+    "description": "Opis",
+    "status": "Status",
+    "created": "Utworzono",
+    "updated": "Zaktualizowano",
+    "action": "Akcja",
+    "rank": "Ranga"
+  },
+  "buttons": {
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "view": "Zobacz"
+  },
+  "household": {
+    "members": "Członkowie gospodarstwa domowego",
+    "name": "Nazwa",
+    "round": "Runda",
+    "image": "Obraz gospodarstwa domowego",
+    "funds": "Fundusze ($)",
+    "wealth": "Majątek ($)",
+    "house": "Dom",
+    "selectHouse": "Wybierz dom"
+  },
+  "image": {
+    "chooseImage": "Wybierz obraz",
+    "dragDrop": "Przeciągnij i upuść obraz tutaj lub kliknij, aby wybrać"
+  }
+}

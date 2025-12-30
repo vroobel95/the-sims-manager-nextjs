@@ -1,5 +1,7 @@
 'use client';
 
+import { getTranslation } from '@/app/lib/i18n';
+import { useLocale } from '@/app/lib/i18n/LocaleContext';
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { ReactNode, useState } from 'react';
@@ -7,6 +9,7 @@ import { ReactNode, useState } from 'react';
 export interface Column {
   key: string;
   label: string;
+  translationKey?: string;
   icon?: ReactNode;
   iconUrl?: string;
 }
@@ -41,9 +44,18 @@ export default function Table<
   showAddButton = false,
   onAdd,
 }: TableProps<T>) {
+  const { locale } = useLocale();
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const hasIcon = columns.some((col) => col.icon || col.iconUrl);
   const hasActions = actions.length > 0;
+
+  // Helper function to get header label
+  const getHeaderLabel = (col: Column): string => {
+    if (col.translationKey) {
+      return getTranslation(locale, col.translationKey);
+    }
+    return col.label;
+  };
 
   const handleMenuToggle = (rowId: string) => {
     setOpenMenuId(openMenuId === rowId ? null : rowId);
@@ -57,7 +69,9 @@ export default function Table<
   if (data.length === 0) {
     return (
       <div className='mt-6 text-center py-12'>
-        <p className='text-gray-500 dark:text-gray-400'>No data available</p>
+        <p className='text-gray-500 dark:text-gray-400'>
+          {getTranslation(locale, 'table.noData')}
+        </p>
       </div>
     );
   }
@@ -70,7 +84,7 @@ export default function Table<
             onClick={onAdd}
             className='px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-500'
           >
-            Add
+            {getTranslation(locale, 'table.add')}
           </button>
         </div>
       )}
@@ -80,7 +94,7 @@ export default function Table<
             <tr className='border-b border-gray-100 bg-gray-50'>
               {hasIcon && (
                 <th className='px-6 py-4 text-left text-sm font-semibold text-gray-700'>
-                  Icon
+                  {getTranslation(locale, 'table.icon')}
                 </th>
               )}
               {columns.map(
@@ -90,13 +104,13 @@ export default function Table<
                       key={col.key}
                       className='px-6 py-4 text-left text-sm font-semibold text-gray-700'
                     >
-                      {col.label}
+                      {getHeaderLabel(col)}
                     </th>
                   )
               )}
               {hasActions && (
                 <th className='px-6 py-4 text-left text-sm font-semibold text-gray-700'>
-                  Actions
+                  {getTranslation(locale, 'table.actions')}
                 </th>
               )}
             </tr>

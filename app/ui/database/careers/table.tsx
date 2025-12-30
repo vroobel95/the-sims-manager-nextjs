@@ -20,10 +20,12 @@ export default function CareersTable() {
       key: 'icon_url',
       label: 'Icon',
       iconUrl: 'icon_url',
+      translationKey: 'table.icon',
     },
     {
       key: 'name',
       label: 'Name',
+      translationKey: 'columns.name',
     },
   ];
 

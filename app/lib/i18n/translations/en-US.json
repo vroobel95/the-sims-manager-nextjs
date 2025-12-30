@@ -1,0 +1,40 @@
+{
+  "table": {
+    "icon": "Icon",
+    "name": "Name",
+    "actions": "Actions",
+    "noData": "No data available",
+    "add": "Add"
+  },
+  "columns": {
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "created": "Created",
+    "updated": "Updated",
+    "action": "Action",
+    "rank": "Rank"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View"
+  },
+  "household": {
+    "members": "Household Members",
+    "name": "Name",
+    "round": "Round",
+    "image": "Household Image",
+    "funds": "Funds ($)",
+    "wealth": "Wealth ($)",
+    "house": "House",
+    "selectHouse": "Select House"
+  },
+  "image": {
+    "chooseImage": "Choose Image",
+    "dragDrop": "Drag and drop an image here, or click to select one"
+  }
+}

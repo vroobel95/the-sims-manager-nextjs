@@ -16,14 +16,17 @@ export default function BadgesTable() {
       key: 'icon_url',
       label: 'Icon',
       iconUrl: 'icon_url',
+      translationKey: 'table.icon',
     },
     {
       key: 'name',
       label: 'Name',
+      translationKey: 'columns.name',
     },
     {
       key: 'badge_rank',
       label: 'Rank',
+      translationKey: 'columns.rank',
     },
   ];
 

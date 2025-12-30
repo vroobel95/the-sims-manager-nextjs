@@ -2,6 +2,8 @@
 
 import { HouseholdSim } from '@/app/lib/definitions';
 import { useHouseholdDetail } from '@/app/lib/households/useHouseholdDetail';
+import { getTranslation } from '@/app/lib/i18n';
+import { useLocale } from '@/app/lib/i18n/LocaleContext';
 import { useResidentialLots } from '@/app/lib/residentialLots/useResidentialLots';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -9,6 +11,7 @@ import Breadcrumbs from '../breadcrumbs';
 import Spinner from '../spinner';
 
 export default function HouseholdDetail({ id }: { id: string }) {
+  const { locale } = useLocale();
   const { household, isLoading, error } = useHouseholdDetail(id);
   const { lots, isLoading: lotsLoading } = useResidentialLots();
   const [isEditMode, setIsEditMode] = useState(false);
@@ -16,6 +19,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
   const [name, setName] = useState<string>(household?.name || '');
   const [round, setRound] = useState<number>(household?.round || 0);
   const [funds, setFunds] = useState<number>(household?.funds || 0);
+  const [wealth, setWealth] = useState<number>(household?.wealth || 0);
   const [imageUrl, setImageUrl] = useState<string | null>(
     household?.image_url || null
   );
@@ -27,6 +31,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
     name: household?.name || '',
     round: household?.round || 0,
     funds: household?.funds || 0,
+    wealth: household?.wealth || 0,
     imageUrl: household?.image_url || null,
     houseId: household?.name || '',
   });
@@ -92,8 +97,19 @@ export default function HouseholdDetail({ id }: { id: string }) {
   };
 
   const handleFundsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFunds(Number(e.target.value.replace(/,/g, '')));
-    setHasChanges(true);
+    const value = Number(e.target.value.replace(/,/g, ''));
+    if (value <= 9999999) {
+      setFunds(value);
+      setHasChanges(true);
+    }
+  };
+
+  const handleWealthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value.replace(/,/g, ''));
+    if (value <= 9999999) {
+      setWealth(value);
+      setHasChanges(true);
+    }
   };
 
   const handleEdit = () => {
@@ -105,6 +121,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
     setName(originalData.name);
     setRound(originalData.round);
     setFunds(originalData.funds);
+    setFunds(originalData.wealth);
     setImageUrl(originalData.imageUrl);
     setSelectedHouseId(originalData.houseId);
     setHasChanges(false);
@@ -115,6 +132,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
       setName(household.name);
       setRound(household.round);
       setFunds(household.funds);
+      setWealth(household.wealth || 0);
       setImageUrl(household.image_url || null);
       setSelectedHouseId(household.name || '');
     }
@@ -183,13 +201,13 @@ export default function HouseholdDetail({ id }: { id: string }) {
                   onClick={handleEdit}
                   className='inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors'
                 >
-                  Edit
+                  {getTranslation(locale, 'buttons.edit')}
                 </button>
                 <button
                   onClick={handleDelete}
                   className='inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors'
                 >
-                  Delete
+                  {getTranslation(locale, 'buttons.delete')}
                 </button>
               </>
             ) : (
@@ -198,7 +216,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
                   onClick={handleCancel}
                   className='inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors'
                 >
-                  Cancel
+                  {getTranslation(locale, 'buttons.cancel')}
                 </button>
                 <button
                   onClick={handleSave}
@@ -209,7 +227,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
-                  Save
+                  {getTranslation(locale, 'buttons.save')}
                 </button>
               </>
             )}
@@ -219,7 +237,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
         <form className='flex flex-col gap-3 space-y-8'>
           <div>
             <label className='block text-sm font-semibold text-gray-900 mb-4'>
-              Household Image
+              {getTranslation(locale, 'household.image')}
             </label>
             {!isEditMode ? (
               <div className='flex justify-center'>
@@ -292,7 +310,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
                     </div>
                   )}
                   <p className='text-sm text-gray-600 mb-4 text-center'>
-                    Drag and drop an image here or click to select
+                    {getTranslation(locale, 'image.dragDrop')}
                   </p>
                   <input
                     type='file'
@@ -305,7 +323,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
                     htmlFor='image-upload'
                     className='inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg cursor-pointer transition-colors'
                   >
-                    Choose Image
+                    {getTranslation(locale, 'image.chooseImage')}
                   </label>
                 </div>
               </div>
@@ -315,7 +333,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
           <div className='grid grid-cols-2 gap-8'>
             <div>
               <label className='block text-sm font-semibold text-gray-900 mb-3'>
-                Name
+                {getTranslation(locale, 'household.name')}
               </label>
               <input
                 type='text'
@@ -332,7 +350,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
 
             <div>
               <label className='block text-sm font-semibold text-gray-900 mb-3'>
-                Round
+                {getTranslation(locale, 'household.round')}
               </label>
               <input
                 type='number'
@@ -349,7 +367,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
 
             <div>
               <label className='block text-sm font-semibold text-gray-900 mb-3'>
-                House
+                {getTranslation(locale, 'household.house')}
               </label>
               {isEditMode ? (
                 <select
@@ -357,7 +375,9 @@ export default function HouseholdDetail({ id }: { id: string }) {
                   onChange={handleHouseChange}
                   className='w-full px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent'
                 >
-                  <option value=''>Select a house</option>
+                  <option value=''>
+                    {getTranslation(locale, 'household.selectHouse')}
+                  </option>
                   {lots?.map((lot) => (
                     <option key={lot.id} value={lot.id}>
                       {lot.address}
@@ -376,18 +396,17 @@ export default function HouseholdDetail({ id }: { id: string }) {
 
             <div>
               <label className='block text-sm font-semibold text-gray-900 mb-3'>
-                Funds
+                {getTranslation(locale, 'household.funds')}
               </label>
               <div className='relative'>
-                <span className='absolute left-4 top-2 text-gray-500 font-medium'>
-                  $
-                </span>
                 <input
-                  type='text'
-                  value={funds.toLocaleString()}
+                  type='number'
+                  value={funds}
                   onChange={handleFundsChange}
                   readOnly={!isEditMode}
-                  className={`w-full pl-7 pr-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-0 ${
+                  min='0'
+                  max='9999999'
+                  className={`w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-0 ${
                     isEditMode
                       ? 'bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
                       : 'bg-gray-50'
@@ -398,19 +417,17 @@ export default function HouseholdDetail({ id }: { id: string }) {
 
             <div className='col-span-2 sm:col-span-1'>
               <label className='block text-sm font-semibold text-gray-900 mb-3'>
-                Wealth
+                {getTranslation(locale, 'household.wealth')}
               </label>
               <div className='relative'>
-                <span className='absolute left-4 top-2 text-gray-500 font-medium'>
-                  $
-                </span>
                 <input
-                  type='text'
-                  value={
-                    household.wealth ? household.wealth.toLocaleString() : 'N/A'
-                  }
+                  type='number'
+                  value={wealth}
                   readOnly={!isEditMode}
-                  className={`w-full pl-7 pr-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-0 ${
+                  onChange={handleWealthChange}
+                  min='0'
+                  max='9999999'
+                  className={`w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-0 ${
                     isEditMode
                       ? 'bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent'
                       : 'bg-gray-50'
@@ -425,7 +442,7 @@ export default function HouseholdDetail({ id }: { id: string }) {
       <div>
         <div className='mb-8'>
           <h2 className='text-2xl font-bold text-gray-900'>
-            Household Members
+            {getTranslation(locale, 'household.members')}
           </h2>
           <p className='text-gray-600 text-sm mt-1'>
             {household.assigned_sims?.length || 0} sims
